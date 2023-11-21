@@ -43,10 +43,11 @@
     <label for="question">Question</label>
     <input type="text" name="question" id="question" placeholder="Enter question..."> 
     <label for="selecttype">Answer Type</label>
-    <select name="selecttype" id="selecttype">
+    <select name="selecttype" id="formType">
+        <option>--Select Option--</option>
         <option value="multiplechoice">Multiple Choice</option>
-        <option value="fill">Identification</option>
-        <option value="check">Check Box</option>
+        <option value="identification">Identification</option>
+        <option value="checkbox">Check Box</option>
     </select>
     </form>
     <button onclick="addForm()" class="btnadd">Add Question</button><br><br><br><br>
@@ -60,6 +61,8 @@
 
             document.getElementById('formContainer').appendChild(cloned);
         }
+
+        function addc
     </script>
 </body>
 </html>

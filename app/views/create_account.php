@@ -72,18 +72,54 @@
 </head>
 <body>
      <div class="container">
-
-
-    <form class="form" >
+     <form class="form" method="post" action="/" onsubmit="return validateForm()">
             <h1 style="text-align: center">Create Account</h1>
             <input type="text" id="username" class="form-control" name="username" placeholder="Username"required><br>
             <input type="email" id="email" class="form-control" name="email" placeholder="Email" required><br>
-            <input type="text" id="password" class="form-control" name="password" placeholder="Password" required><br>
-            <input type="text" id="vpassword" class="form-control" name="vpassword" placeholder="Verify Password" required><br>
-        <button type="submit" class="btn">Submit</button> 
-        <h3>Already have an account?
-        <a href="/">Login</a></h3>
-    </form>
+            <input type="password" id="password" class="form-control" name="password" placeholder="Password" required><br>
+            <input type="password" id="vpassword" class="form-control" name="vpassword" placeholder="Verify Password" required oninput="validatePassword()"><br>
+            <span id="passwordError" style="color: red;"></span><br>
+
+                <button type="submit" class="btn"><a href="/">Submit</a></button> 
+      
+            <h3>Already have an account?
+            <a href="/">Login</a></h3>
+        </form>
+
+    <script>
+        function validateForm() {
+                var password = document.getElementById("password").value;
+                var vpassword = document.getElementById("vpassword").value;
+                var passwordError = document.getElementById("passwordError");
+
+                if (password !== vpassword) {
+                    passwordError.innerHTML = "Passwords do not match";
+                    return false;
+                } else {
+                    passwordError.innerHTML = "";
+                    return true;
+                }
+
+                if (password.length < 8) {
+                    passwordError.innerHTML = "Password must be at least 8 characters";
+                    return false;
+                } else {
+                    passwordError.innerHTML = "";
+                }
+                return true;
+            }
+
+            function validatePassword() {
+                var password = document.getElementById("password").value;
+                var passwordError = document.getElementById("passwordError");
+
+                if (password.length < 8) {
+                    passwordError.innerHTML = "Password must be at least 8 characters";
+                } else {
+                    passwordError.innerHTML = "";
+                }
+            }
+        </script>
     </body>
 </body>
 </html>

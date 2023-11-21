@@ -45,6 +45,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 
 $router->get('/', 'UserController::index');
-$router->get('home','UserController::login');
-$router->get('create_account','UserController::create_account');
-$router->get('create_quiz','UserController::create_quiz');
+$router->get('/home','UserController::login');
+$router->get('/create_account', 'UserController::create_account');
+    
+$router->get('/create_quiz','UserController::create_quiz');
+$router->get('/quiz1','UserController::quiz1');

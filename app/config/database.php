@@ -64,8 +64,8 @@ $database['main'] = array(
     'port'		=> '3306',
     'username'	=> 'root',
     'password'	=> '',
-    'database'	=> '',
-    'charset'	=> '',
+    'database'	=> 'quiz',
+    'charset'	=> 'utf8',
     'dbprefix'	=> '',
 );
 

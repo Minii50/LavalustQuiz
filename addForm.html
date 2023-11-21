@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Form Example</title>
+
+  <style>
+    input[type=text], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+  </style>
+</head>
+<body>
+
+<select id="formType">
+  <option value="multipleChoice">Multiple Choice</option>
+  <option value="identification">Identification</option>
+  <option value="enumeration">Enumeration</option>
+  <option value="checkbox">Check Box</option>
+  
+  <!-- Add more options as needed -->
+</select>
+
+<button onclick="addForm()">Add Form</button>
+
+<div id="formContainer"></div>
+
+<script>
+  function addForm() {
+    var formType = document.getElementById('formType').value;
+   
+    // Create a new form based on the selected type
+    var newForm = document.createElement('form');
+   
+    if (formType === 'multipleChoice') {
+      newForm.innerHTML = `
+        <label for="question">Multiple Choice Question:</label><br>
+        <textarea id="question" name="question" placeholder="Write your question.."></textarea>
+        <label for="option1">Option 1:</label>
+        <input type="text" id="option1" name="option1">
+        <br>
+        <label for="option2">Option 2:</label>
+        <input type="text" id="option2" name="option2">
+        <label for="option3">Option 3:</label>
+        <input type="text" id="option3" name="option3">
+        <label for="option4">Option 4:</label>
+        <input type="text" id="option4" name="option4">
+        <!-- Add more options as needed -->
+      `;
+    } else if (formType === 'identification') {
+      newForm.innerHTML = `
+        <label for="question">Identification Question:</label>
+        <input type="text" id="question" name="question">
+        <br>
+        <label for="answer">Answer:</label>
+        <input type="text" id="answer" name="answer">
+      `;
+    }
+    // Add the new form to the container
+    document.getElementById('formContainer').appendChild(newForm);
+  }
+</script>
+
+</body>
+</html>

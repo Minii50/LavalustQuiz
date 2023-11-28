@@ -65,7 +65,6 @@
   <select id="formType">
     <option value="multipleChoice">Multiple Choice</option>
     <option value="identification">Identification</option>
-    <!-- Add more options as needed -->
   </select>
   
   <button onclick="addForm()">Add Form</button>
@@ -82,7 +81,6 @@
   function addForm() {
     var formType = document.getElementById('formType').value;
    
-    // Create a new form based on the selected type
     var newForm = document.createElement('form');
    
     if (formType === 'multipleChoice') {
@@ -95,8 +93,6 @@
         <br>
         <label for="option2">Option 2:</label>
         <input type="text" id="option2" name="option2">
-        ---------------------------------------------
-        <!-- Add more options as needed -->
       `;
     } else if (formType === 'identification') {
       newForm.innerHTML = `
@@ -107,7 +103,6 @@
         <input type="text" id="answer" name="answer">
       `;
     }
-    // Add the new form to the container
     document.getElementById('formContainer').appendChild(newForm);
   }
 </script>

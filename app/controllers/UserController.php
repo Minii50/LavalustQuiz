@@ -7,19 +7,6 @@ class UserController extends Controller {
         $this->call->view('login');
     }
     public function create_account(){
-        
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
-                $name = $_POST['username'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-            
-                $user_model = $this->load_model('User_model');
-                $user_model->create_user($name, $email, $password);
-            } else {
-                echo "Invalid form submission.";
-            }
-        }
         $this->call->view("create_account");
     }
 
@@ -27,7 +14,19 @@ class UserController extends Controller {
         $this->call->view('create_quiz');
     }
     public function login() {
-        $this->call->view('login');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+    
+            $login_result = $this->user_model->check_login($username, $password);
+    
+            if ($login_result) {
+                $this->call->view('nice_createquiz');
+                exit;
+            } else {
+                echo 'Invalid username or password';
+            }
+        }
     }
 
     public function quiz1(){

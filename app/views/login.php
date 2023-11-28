@@ -72,7 +72,7 @@
     </style>
 </head>
 <body>
-<form class="form">
+<form class="form" action="/login" method="post">
             <h1 style="text-align: center">Login</h1>
             <input type="text" id="username" class="form-control" name="username" placeholder="Username"required><br>
             <input type="text" id="password" class="form-control" name="passoword" placeholder="Password" required><br>

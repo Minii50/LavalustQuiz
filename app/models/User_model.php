@@ -7,20 +7,31 @@ class User_model extends Model {
         parent::__construct();
         $this->call->database();
     }
-	public function create_account($name, $email, $password)
-{
-    $data = array(
-        'username' => $name,
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_DEFAULT),
-    );
 
-    $result = $this->db->table('users')->insert($data);
+    public function create_account($name, $email, $password)
+    {
+        $data = array(
+            'username' => $name,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
+        );
 
-    if ($result) {
-        return true;
+        $result = $this->db->table('users')->insert($data);
+
+        if ($result) {
+            return true;
+        }
+    }
+
+    public function check_login($username, $password)
+    {
+        $user = $this->db->table('users')->where('username', $username)->first();
+
+        if ($user && password_verify($password, $user['password'])) {
+            return true; 
+        } else {
+            return false; 
+        }
     }
 }
-}
-
 ?>

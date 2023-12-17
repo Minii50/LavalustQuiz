@@ -7,7 +7,7 @@ class Quiz extends Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Quiz_model'); 
+        $this->call->model('Quiz_model'); 
     }
 
     public function index()
@@ -22,35 +22,21 @@ class Quiz extends Controller {
     public function create_quiz_post() 
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $jsonPayload = file_get_contents('php://input');
-            $postData = json_decode($jsonPayload, true);
-
-            $quizTitle = $postData['quizTitle'];
-            $note = $postData['note'];
-            $questions = $postData['questions'];
-
-            // Initialize arrays to store question details
-            $quizQuestions = [];
-            $quizTypes = [];
-            $quizAnswers = [];
-
-            // Loop through each question in the array
-            foreach ($questions as $question) {
-                $quizQuestions[] = $question['text'];
-                $quizTypes[] = $question['type'];
-                $quizAnswers[] = $question['answer'];
-            }
-
-            // Pass arrays to the model function
-            $quizCreated = $this->Quiz_model->create_quiz($quizTitle, $note, $quizQuestions, $quizTypes, $quizAnswers);
-
-            if ($quizCreated) {
-                // Quiz creation was successful
-                $this->call->view('login');
-                exit;
+            $quizTitle = $_POST['quizTitle'] ?? ''; 
+            $note = $_POST['note'] ?? '';
+            $question = $_POST['question'] ?? '';
+            $selecttype = $_POST['selecttype'] ?? '';
+            $answer = $_POST['answer'] ?? '';
+        
+            $this->call->model('Quiz_model');  
+            $quizModel = new Quiz_model();
+        
+            $result = $quizModel->create_quiz($quizTitle, $note, $question, $selecttype, $answer);
+        
+            if ($result) {
+                echo "Quiz created successfully!";
             } else {
-                // Quiz creation failed
-                echo 'Failed to create the quiz';
+                echo "Failed to create quiz.";
             }
         }
     }

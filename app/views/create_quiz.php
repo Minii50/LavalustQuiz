@@ -83,9 +83,7 @@
                 <option value="checkbox">Check Box</option>
             </select>
 
-            <!-- Answer fields container -->
             <div class="answer-container" id="answerContainer">
-                <!-- Dynamic answer fields will be added here -->
             </div><hr>
 
             <button type="submit" class="btn">Save Quiz</button>

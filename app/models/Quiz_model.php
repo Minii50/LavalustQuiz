@@ -13,9 +13,9 @@ class Quiz_model extends Model {
         $quizData = array(
             'quiz_title' => $quiz_title,
             'quiz_note' => $quiz_note,
-            'quiz_question' => $quiz_question[0]['text'],
-            'quiz_type' => $quiz_type[0]['type'],
-            'quiz_answer' => $quiz_answer[0]['answer'],
+            'quiz_question' => $quiz_question,
+            'quiz_type' => $quiz_type,
+            'quiz_answer' => $quiz_answer,
         );
 
         $inserted = $this->db->table('quiz_table')->insert($quizData);

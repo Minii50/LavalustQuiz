@@ -48,9 +48,9 @@ $router->get('/home', 'UserController::login');
 $router->get('/create_account', 'UserController::create_account');
 $router->get('/login', 'UserController::login');
 //$router->match(['get', 'post'], '/login', 'UserController::login');
-$router->get('/create_quiz', 'UserController::create_quiz');
+//$router->get('/create_quiz', 'UserController::create_quiz');
 $router->get('/quiz1', 'UserController::quiz1');
 
 
 $router->get('/create_quiz', 'Quiz::create_quiz_get');
-$router->post('/create_quiz', 'Quiz::create_quiz_post');
+$router->post('/create_quizzes', 'Quiz::create_quiz_post');

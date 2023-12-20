@@ -6,6 +6,7 @@ class Quiz_model extends Model {
     public function __construct()
     {
         parent::__construct();
+        $this->call->database();
     }
 
     public function create_quiz($quiz_title, $quiz_note, $quiz_question, $quiz_type, $quiz_answer)

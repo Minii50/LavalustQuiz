@@ -67,12 +67,11 @@
 
     <div class="container">
         <h1 style="text-align: center">Create Your Own Quiz!</h1>
-        <h2>Quiz Title:</h2>
+        <form method="post" action="<?= site_url('create_quizzes');?>" id="formContainer">
+        <h2>Quiz Title:</h2>    
         <textarea id="quizTitle" name="quizTitle" placeholder="Write Quiz Title"></textarea><br>
         <h2>Note:<p class="subcomment">(Optional)</p></h2>
         <textarea id="note" name="note" placeholder="Write your note.."></textarea><br>
-
-        <form method="post" action="/create_quiz" id="formContainer">
             <label for="question">Question</label>
             <input type="text" name="question" class="question" placeholder="Enter question...">
             <label for="selecttype">Answer Type</label>
@@ -84,7 +83,7 @@
             </select>
 
             <div class="answer-container" id="answerContainer">
-            </div><hr>
+            </div><hr>/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\<hr>
 
             <button type="submit" class="btn">Save Quiz</button>
         </form>

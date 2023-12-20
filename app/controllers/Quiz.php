@@ -21,24 +21,38 @@ class Quiz extends Controller {
     
     public function create_quiz_post() 
     {
+        $this->call->view('create_quiz');
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //     $quizTitle = $_POST['quizTitle'] ?? ''; 
+        //     $note = $_POST['note'] ?? '';
+        //     $question = $_POST['question'] ?? '';
+        //     $selecttype = $_POST['selecttype'] ?? '';
+        //     $answer = $_POST['answer'] ?? '';
+        
+        //     $this->call->model('Quiz_model');  
+        //     $quizModel = new Quiz_model();
+        
+        //     $result = $quizModel->create_quiz($quizTitle, $note, $question, $selecttype, $answer);
+        
+        //     if ($result) {
+        //         echo "Quiz created successfully!";
+        //     } else {
+        //         echo "Failed to create quiz.";
+        //     }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $quizTitle = $_POST['quizTitle'] ?? ''; 
-            $note = $_POST['note'] ?? '';
-            $question = $_POST['question'] ?? '';
-            $selecttype = $_POST['selecttype'] ?? '';
-            $answer = $_POST['answer'] ?? '';
+            $quizTitle = isset($_POST['quiz_title']) ? $_POST['quiz_title'] : '';
+            $note = isset($_POST['note']) ? $_POST['note'] : '';
+            $question = isset($_POST['question']) ? $_POST['question'] : '';
+            $selecttype = isset($_POST['selecttype']) ? $_POST['selecttype'] : '';
+            $answer = isset($_POST['answer']) ? $_POST['answer'] : '';
         
             $this->call->model('Quiz_model');  
-            $quizModel = new Quiz_model();
-        
-            $result = $quizModel->create_quiz($quizTitle, $note, $question, $selecttype, $answer);
-        
-            if ($result) {
-                echo "Quiz created successfully!";
-            } else {
-                echo "Failed to create quiz.";
-            }
+            $this->Quiz_model->create_quiz($quizTitle, $note, $question, $selecttype, $answer);
+          
+            return redirect('create_quiz');
         }
+        // }
     }
 }
 

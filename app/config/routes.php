@@ -54,3 +54,5 @@ $router->get('/quiz1', 'UserController::quiz1');
 
 $router->get('/create_quiz', 'Quiz::create_quiz_get');
 $router->post('/create_quizzes', 'Quiz::create_quiz_post');
+
+$router->get('/ViewForm', 'Quiz::ViewForm');    

@@ -4,16 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Quiz Form</title>
 
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-image: url('../public/images/black.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color:white;
+        }
+
+        .btnadd {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .glow {
+            animation: glowing 3s infinite;
+        }
+
+        @keyframes glowing {
+            0% {
+                background-color: #ffcc00; /* Initial color */
+                box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+            }
+            50% {
+                background-color: #ff9900; /* Mid color */
+                box-shadow: 0 0 20px #ff9900, 0 0 30px #ff9900, 0 0 40px #ff9900;
+            }
+            100% {
+                background-color: #ffcc00; /* Final color */
+                box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+            }
         }
 
         .header {
-            background-color: #f1f1f1;
+            background-color: brown;
             padding: 20px;
             text-align: center;
             position: sticky;
@@ -56,26 +88,30 @@
         button:hover {
             background-color: #45a049;
         }
+
+        .btnadd{
+
+        }
     </style>
 </head>
 
 <body>
 
 <div class="header">
-        <button onclick="addForm()" class="btnadd">Add Question</button>
+        <h1 style="text-align: center">Create Your Own Quiz!</h1>
+        <button onclick="addForm()" class="btnadd">Add Question</button>    
     </div>
 
     <div class="container">
-        <h1 style="text-align: center">Create Your Own Quiz!</h1>
         <form method="post" action="<?= site_url('create_quizzes');?>" id="formContainer">
         <h2>Quiz Title:</h2>    
-        <textarea id="quizTitle" name="quizTitle" placeholder="Write Quiz Title"></textarea><br>
+        <textarea id="quiz_title" name="quiz_title" placeholder="Write Quiz Title" required></textarea><br>
         <h2>Note:<p class="subcomment">(Optional)</p></h2>
         <textarea id="note" name="note" placeholder="Write your note.."></textarea><br>
             <label for="question">Question</label>
-            <input type="text" name="question" class="question" placeholder="Enter question...">
+            <input type="text" name="question" class="question" placeholder="Enter question..." required>
             <label for="selecttype">Answer Type</label>
-            <select name="selecttype" class="formType" onchange="showAnswerFields(this)">
+            <select name="selecttype" class="formType" onchange="showAnswerFields(this)" required>
                 <option>--Select Option--</option>
                 <option value="multiplechoice">Multiple Choice</option>
                 <option value="identification">Identification</option>
@@ -83,9 +119,9 @@
             </select>
 
             <div class="answer-container" id="answerContainer">
-            </div><hr>/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\<hr>
+            </div><hr>/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/<hr>
 
-            <button type="submit" class="btn">Save Quiz</button>
+            <button type="submit" class="btn btn-primary">Save Quiz</button>
         </form>
     </div>
 
@@ -139,6 +175,16 @@
             answerContainer.style.display = 'none';
         }
     }
+
+    setInterval(function () {
+        var glowButton = document.getElementById('glowButton');
+        glowButton.classList.add('glow');
+
+        // Remove the 'glow' class after the animation duration
+        setTimeout(function () {
+            glowButton.classList.remove('glow');
+        }, 3000);
+    }, 6000);
 </script>
 </body>
 

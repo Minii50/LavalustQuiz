@@ -41,18 +41,28 @@ class Quiz extends Controller {
         //     }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $quizTitle = isset($_POST['quiz_title']) ? $_POST['quiz_title'] : '';
+            $quiz_title = isset($_POST['quiz_title']) ? $_POST['quiz_title'] : '';
             $note = isset($_POST['note']) ? $_POST['note'] : '';
             $question = isset($_POST['question']) ? $_POST['question'] : '';
             $selecttype = isset($_POST['selecttype']) ? $_POST['selecttype'] : '';
             $answer = isset($_POST['answer']) ? $_POST['answer'] : '';
         
             $this->call->model('Quiz_model');  
-            $this->Quiz_model->create_quiz($quizTitle, $note, $question, $selecttype, $answer);
+            $this->Quiz_model->create_quiz($quiz_title, $note, $question, $selecttype, $answer);
           
             return redirect('create_quiz');
         }
         // }
+    }
+
+    public function view_form()
+    {
+        // Fetch quiz questions from the database
+        $questions = $this->Quiz_model->get_quiz_questions(); // Create this method in your model
+
+        // Pass data to the view
+        $data['questions'] = $questions;
+        $this->call->view('view_form', $data);
     }
 }
 
